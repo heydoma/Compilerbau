@@ -1,0 +1,17 @@
+//5
+int i1
+int i2
+
+struct A {
+    int t;
+}
+
+A s1
+A s2
+int main {
+    i1 = 2;
+    i2 = 3;
+    s1.t = 5;
+    s2 = i2 == 3 ? s1 : s2;
+    return s2.t;
+}

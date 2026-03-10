@@ -1,0 +1,9 @@
+//1
+int i1
+int i2
+
+bool main {
+    i1 = 1;
+    i2 = 1;
+    return i1 >= i2;
+}

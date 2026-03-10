@@ -1,0 +1,124 @@
+PDefs.                  Program  ::= [Def] ;
+
+-- Definitions
+PUsePackage.            Def ::= "using" QualConst ";" ;
+PDecl.                  Def ::= Decl ;
+
+-- Declarations
+DVar.                   Decl     ::= VarDecl ;
+DStruct.                Decl     ::= Struct ;
+DType.                  Decl     ::= Typedef ;
+DFuncDecl.              Decl     ::= FuncDecl ;
+
+DInlineFunc.            FuncDecl ::= "inline" Func ;
+DRegFunc.               FuncDecl ::= Func ;
+DFunc.                  Func     ::= Type Name "(" [ArgDecl] ")" "{" [Stm] "}" ;
+DFuncEmpty.             Func     ::= Type Name "(" [ArgDecl] ")" ";" ;
+DStructDecl.            Struct   ::= "struct" Name "{" [Decl] "}" ";" ;
+DStructInher.           Struct   ::= "struct" Name ":" [Type] "{" [Decl] "}" ";" ;
+DTypedef.               Typedef  ::= "typedef" Type Name ";" ;
+
+-- Variable Declarations
+DVarSpec.               VarDecl   ::= DeclSpecifier Type [DeclBody] ";" ;
+DVarEmpty.              VarDecl   ::= Type [DeclBody] ";" ;
+DBId.                   DeclBody  ::= Id ;
+DBInit.                 DeclBody  ::= Id "=" Exp ;
+
+-- Argument declaration
+AConst.                 ArgDecl     ::= "const" Type ;
+AEmpty.                 ArgDecl     ::= Type ;
+AConstBody.             ArgDecl     ::= "const" Type ArgDeclBody ;
+ABody.                  ArgDecl     ::= Type ArgDeclBody ;
+DBArgDecl.              ArgDeclBody ::= Id ;
+DBArgDeclInit.          ArgDeclBody ::= Id "=" Exp ;
+
+-- Type forming constructors were conflicting with function declarations on the top level
+-- Therefore this is a workaround allowing for type forming constructors to at least be
+-- usable within functions.
+-- DBTypeConstr.         DeclBody    ::= Id "(" [Exp] ")" ;
+SVarDeclSpec.            StmVarDecl  ::= DeclSpecifier Type [StmDeclBody] ;
+SVarDeclEmpty.           StmVarDecl  ::= Type [StmDeclBody] ;
+SDBTypeConstr.           StmDeclBody ::= Id "(" [Exp] ")" ;
+SDeclsVar.               Stm         ::= StmVarDecl ";" ;
+
+-- Statements
+SDecls.                 Stm ::= VarDecl ;
+SExp.                   Stm ::= Exp ";" ;
+SReturn.                Stm ::= "return" Exp ";" ;
+SWhile.                 Stm ::= "while" "(" Exp ")" Stm ;
+SDoWhile.               Stm ::= "do" Stm "while" "(" Exp ")" ";" ;
+SFor.                   Stm ::= "for" "(" VarDecl Exp ";" Exp ")" Stm ;
+SBlock.                 Stm ::= "{" [Stm] "}" ;
+SIf.                    Stm ::= "if" "(" Exp ")" Stm ;
+SIfElse.                Stm ::= "if" "(" Exp ")" Stm "else" Stm ;
+SExcep.                 Stm ::= "try" Stm "catch" "(" ArgDecl ")" Stm;
+SType.                  Stm ::= Typedef ;
+SStruct.                Stm ::= Struct ;
+
+-- Expressions
+StringArray.            Exp15  ::= [String] ;
+ETrue.                  Exp15  ::= "true" ;
+EFalse.                 Exp15  ::= "false" ;
+EInt.                   Exp15  ::= Integer ;
+EDouble.                Exp15  ::= Double ;
+EChar.                  Exp15  ::= Char;
+EQual.                  Exp15  ::= QualConst ;
+EBrack.                 Exp15  ::= Exp15 "[" Exp "]" ;
+EApp.                   Exp15  ::= Exp15 "(" [Exp] ")" ;
+EPostIncr.              Exp14  ::= Exp14 "++" ;
+EPostDecr.              Exp14  ::= Exp14 "--" ;
+EStructAcc.             Exp14  ::= Exp14 "." Exp15 ;
+EStructProj.            Exp14  ::= Exp14 "->" Exp15  ;
+EPreIncr.               Exp13  ::= "++" Exp13 ;
+EPreDecr.               Exp13  ::= "--" Exp13 ;
+ENeg.                   Exp13  ::= "!" Exp13 ;
+EDeref.                 Exp13  ::= "*" Exp13 ;
+EUPlus.                 Exp13  ::= "+" Exp13 ;
+EUMinus.                Exp13  ::= "-" Exp13 ;
+EMod.                   Exp12  ::= Exp12 "%" Exp13 ; 
+ETimes.                 Exp12  ::= Exp12 "*"  Exp13 ;
+EDiv.                   Exp12  ::= Exp12 "/"  Exp13 ;
+EPlus.                  Exp11  ::= Exp11 "+"  Exp12 ;
+EMinus.                 Exp11  ::= Exp11 "-"  Exp12 ;
+EStreamIn.              Exp10  ::= Exp10 "<<" Exp11;
+EStreamOut.             Exp10  ::= Exp10 ">>" Exp11;
+ETWComp.                Exp9   ::= Exp9  "<=>"  Exp10 ;
+ELt.                    Exp9   ::= Exp9  "<"  Exp10 ;
+EGt.                    Exp9   ::= Exp9  ">"  Exp10 ;
+ELtEq.                  Exp9   ::= Exp9  "<=" Exp10 ;
+EGtEq.                  Exp9   ::= Exp9  ">=" Exp10 ;
+EEq.                    Exp8   ::= Exp8  "==" Exp9 ;
+ENEq.                   Exp8   ::= Exp8  "!=" Exp9 ;
+EAnd.                   Exp4   ::= Exp4  "&&" Exp5 ;
+EOr.                    Exp3   ::= Exp3  "||" Exp4 ;
+ETernary.               Exp2   ::= Exp3 "?" Exp2 ":" Exp2 ;
+EIncBy.                 Exp2   ::= Exp3 "+=" Exp2 ;
+EDecBy.                 Exp2   ::= Exp3 "-=" Exp2 ;
+EAss.                   Exp2   ::= Exp3 "=" Exp2 ;
+EThrow.                 Exp1   ::= "throw" Exp1 ;
+
+NQual.                  QualConst     ::= [Name] ;
+rules                   Type          ::= "bool" |"int" | "double" | "void" | "char" | QualConst | Type "&" ;
+rules                   DeclSpecifier ::= "const" | "constinit" | "const" "constinit" | "constinit" "const" ;
+rules                   Name          ::= Id | Id "<" [Type] ">";
+
+terminator              Stm "" ;
+terminator              Def "" ;
+terminator              Decl "" ;
+
+separator               VarDecl ";";
+separator               ArgDecl "," ;
+separator               Exp "," ;
+separator nonempty      String "" ;
+separator nonempty      Type "," ;
+separator nonempty      DeclBody "," ;
+separator nonempty      StmDeclBody "," ;
+separator nonempty      Name "::" ;
+
+token                   Id (letter (letter | digit | '_' )*);
+
+comment "#" ;
+comment "//" ;
+comment "/*" "*/" ;
+
+coercions               Exp 15 ;

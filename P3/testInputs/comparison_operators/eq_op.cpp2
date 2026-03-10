@@ -1,0 +1,26 @@
+//1
+int i1
+int i2
+
+struct A {
+    int t1;
+    bool t2;
+}
+
+struct B {
+    A s1;
+    bool s2;
+}
+
+B b1
+B b2
+
+bool main {
+    b1.s1.t1 = 4;
+    b2.s1.t1 = 4;
+    b1.s1.t2 = true;
+    b2.s1.t2 = true;
+    b1.s2 = true;
+    b2.s2 = true;
+    return b1 == b2;
+}

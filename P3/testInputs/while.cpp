@@ -1,0 +1,7 @@
+int i;
+int main() {
+    while(i == 5){
+        i++;
+    }
+    return i;
+}

@@ -1,0 +1,10 @@
+*.hi
+*.hs*
+*.o
+*.txt
+TestCPP
+*.bak
+*.x
+*.y
+Makefile
+*.info

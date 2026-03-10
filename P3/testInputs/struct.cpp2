@@ -1,0 +1,21 @@
+//1
+struct A {
+    bool q;
+    bool w;
+    int a;
+}
+
+struct B {
+    bool q;
+    bool w;
+    int a;
+}
+
+A a
+B b
+
+bool main {
+  b.q = true;
+  //a = b;
+  return a == b;
+}

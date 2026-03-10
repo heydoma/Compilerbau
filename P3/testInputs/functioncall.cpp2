@@ -1,0 +1,11 @@
+//5
+int i
+int test {
+    i = 2;
+    i = 3 + i;
+    return i;
+}
+
+int main {
+    return test();
+}

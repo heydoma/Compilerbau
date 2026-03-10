@@ -1,0 +1,14 @@
+Test1:          Addition von Int und Float
+Test2:          Addition von Int und Double VARIABLEN
+Test3:          Variable einen Wert falschen Types zuweisen
+Test4:          Funktionen definieren, deklarieren und aufrufen
+Test5:          
+Test6:          Structs
+Test7:          for-Schleife
+Test8:          try-catch
+Test9:          while
+Test10:         Boolsche Operatioren !=, &&, ||, ==
+Test11:         Ternary Operatior
+Test12:         if-else
+Test13:         >=
+Test14:         / operator

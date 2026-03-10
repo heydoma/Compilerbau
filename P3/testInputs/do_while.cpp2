@@ -1,0 +1,10 @@
+//4
+int i
+
+int main {
+    i = 10;
+    do {
+        i--;
+    } while(i >= 5);
+    return i;
+}

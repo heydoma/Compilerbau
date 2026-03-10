@@ -1,0 +1,12 @@
+//
+int i
+int j
+int m
+
+int main {
+    i = 12
+    j = 6
+    m = 2
+
+    return i / j / m
+}d

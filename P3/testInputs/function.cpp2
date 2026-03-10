@@ -1,0 +1,9 @@
+//6
+int i1
+int i2
+bool i3
+
+int main {
+    i1 = 6;
+    return i1 + i2;
+}

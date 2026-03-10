@@ -1,0 +1,7 @@
+int i
+
+int main {
+    if(i == 5) i++; else i--;
+    i++;
+    return i;
+}
