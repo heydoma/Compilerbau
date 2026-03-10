@@ -1,0 +1,16 @@
+/workspaces/0-installation/llvm_hs/Codegen.hs:
+  hash: 352d4f633cd83ab6accb581141056d246eb54f443943a3bde1af6c105c46ed4f
+/workspaces/0-installation/llvm_hs/Emit.hs:
+  hash: bdb8f13a72b92975c12861e049835d73a0b4f1948ca2b96b1294d6c2fe447a6c
+/workspaces/0-installation/llvm_hs/JIT.hs:
+  hash: 9b91495cbaaf71e24fd1abe832494ebb08eb4e410acd7a1b9d3a512f0f80089e
+/workspaces/0-installation/llvm_hs/Lexer.hs:
+  hash: 6e5a7062cc92870c944f92c59cdf5dd19be765d91141f061b77cef6f2f78fc0f
+/workspaces/0-installation/llvm_hs/Main.hs:
+  hash: a8c012d88e193eafed10e5f31ce584ba90957b4abbc4ef2aad77d3d010b374f7
+/workspaces/0-installation/llvm_hs/Parser.hs:
+  hash: ed80cb24834adc2fe8c6a52a3691fdc99141455d880c06c186f7119f7d3fd9d7
+/workspaces/0-installation/llvm_hs/Syntax.hs:
+  hash: 7b6a2f440ebdbb1036969f209ceef67287a02f6359c2f71a584c87de4f52e9b2
+/workspaces/0-installation/llvm_hs/llvm-test.cabal:
+  hash: eda34a7ab9df564b6777d7d492d110d195750a46580e559e487287126b2300b6
